@@ -38,5 +38,15 @@ pipeline {
                 }
             }
         }
+        stage ('DeployToProd') {
+            when {
+                branch 'master'
+            }
+            steps {
+                input 'Deploy to Production?'
+                milestone(1)
+                echo 'Deploying to production'
+            }
+        }
     }
 }
